@@ -1,2 +1,2 @@
-# tasky-iac
-tasky iac for AWS
+# youtube-downloader-infra
+Terraform template for youtube downloader app
