@@ -6,7 +6,7 @@ variable "region" {
 }
 
 variable "project_name" {
-  description = "YouTube Downloader App"
+  description = "Tasky App"
   type        = string
 }
 

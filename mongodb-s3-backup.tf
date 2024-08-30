@@ -15,7 +15,7 @@ resource "aws_s3_bucket" "mongodb-s3-backup-bucket" {
   bucket = var.mongodb_s3_backup_bucket
 
   tags = {
-    Name        = "isv-mongodb-backup"
+    Name        = "wiz-mongodb-backup"
     Environment = var.environment
   }
 }
@@ -68,22 +68,4 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
       }
     ]
   })
-}
-
-
-{
-  "Id": "BucketPolicy",
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "AllAccess",
-      "Action": "s3:*",
-      "Effect": "Allow",
-      "Resource": [
-         "arn:aws:s3:::my-bucket",
-         "arn:aws:s3:::my-bucket/*"
-      ],
-      "Principal": "*"
-    }
-  ]
 }
