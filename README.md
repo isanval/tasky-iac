@@ -1,2 +1,2 @@
-# youtube-downloader-infra
-Terraform template for youtube downloader app
+# tasky-iac
+Terraform template for tasky app
