@@ -18,6 +18,7 @@ echo 'db.createUser({user:"${MONGODB_USER}", pwd:"${MONGODB_PASS}", roles:[{role
 sleep 5
 
 echo "security.authorization : enabled" >> /etc/mongod.conf
+sed -i 's/127\.0\.0\.1/0\.0\.0\.0/' /etc/mongod.conf
 
 systemctl restart mongod
 

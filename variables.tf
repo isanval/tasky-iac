@@ -34,3 +34,8 @@ variable "mongodb_pass" {
   description = "MongoDB Password"
   type = string
 }
+
+variable "mongodb_secret" {
+  description = "MongoDB Secret Key"
+  type = string
+}
