@@ -23,6 +23,8 @@ resource "kubernetes_deployment" "tasky" {
       }
 
       spec {
+        service_account_name = "tasky-sa"  # ServiceAccount en el ClusterRoleBinding
+
         container {
           name  = "tasky"
           image = "ghcr.io/isanval/tasky-app:latest"
