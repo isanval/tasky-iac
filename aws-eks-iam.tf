@@ -14,6 +14,10 @@ resource "aws_iam_role" "eks_cluster_role" {
       }
     ]
   })
+  managed_policy_arns = [
+    "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
+    "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
+  ]
 
   tags = {
     Name = "eks-cluster-role"
@@ -28,6 +32,11 @@ resource "aws_iam_role_policy_attachment" "eks_cluster_role_attachment" {
 resource "aws_iam_role_policy_attachment" "eks_vpc_resource_controller_attachment" {
   role       = aws_iam_role.eks_cluster_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
+}
+
+resource "aws_iam_role_policy_attachment" "eks_worker_node_attachment" {
+  role       = aws_iam_role.eks_cluster_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
 }
 
 # IAM Role for EKS Nodes
@@ -46,6 +55,12 @@ resource "aws_iam_role" "eks_node_role" {
       }
     ]
   })
+  
+  managed_policy_arns = [
+    "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
+    "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
+    "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+  ]
 
   tags = {
     Name = "eks-node-role"

@@ -37,5 +37,9 @@ variable "mongodb_pass" {
 
 variable "mongodb_secret" {
   description = "MongoDB Secret Key"
+}
+
+variable "cluster_name" {
+  description = "EKS Cluster Name"
   type = string
 }

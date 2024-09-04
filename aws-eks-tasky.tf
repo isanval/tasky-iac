@@ -23,7 +23,7 @@ resource "kubernetes_deployment" "tasky" {
       }
 
       spec {
-        service_account_name = "tasky-sa"  # ServiceAccount en el ClusterRoleBinding
+#        service_account_name = "tasky-sa"  # ServiceAccount en el ClusterRoleBinding
 
         container {
           name  = "tasky"
@@ -47,25 +47,18 @@ resource "kubernetes_deployment" "tasky" {
   }
 }
 
-resource "kubernetes_service" "tasky_lb" {
+resource "kubernetes_service" "tasky" {
   metadata {
-    name = "tasky-lb"
-    namespace = "default"
-    labels = {
-      app = "tasky"
-    }
+    name = "tasky-service"
   }
-
   spec {
     selector = {
       app = "tasky"
     }
-
     port {
       port        = 80
       target_port = 8080
     }
-
     type = "LoadBalancer"
   }
 }

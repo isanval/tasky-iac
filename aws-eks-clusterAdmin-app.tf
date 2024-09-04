@@ -1,3 +1,22 @@
+resource "kubernetes_cluster_role_binding" "nginx_cluster_admin" {
+  metadata {
+    name = "tasky-cluster-admin"
+  }
+
+  role_ref {
+    api_group = "rbac.authorization.k8s.io"
+    kind      = "ClusterRole"
+    name      = "cluster-admin"
+  }
+
+  subject {
+    kind      = "ServiceAccount"
+    name      = "default"
+    namespace = "default"
+  }
+}
+
+/*
 # ClusterRole con permisos de administrador
 resource "kubernetes_cluster_role" "admin_role" {
   metadata {
@@ -47,3 +66,4 @@ resource "kubernetes_cluster_role_binding" "admin_role_binding" {
     namespace = "default"  # Asegúrate de que este namespace coincida con el de tu aplicación
   }
 }
+*/

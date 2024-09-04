@@ -23,3 +23,7 @@ output "cluster_name" {
 output "cluster_arn" {
   value       = aws_eks_cluster.eks_cluster.arn
 }
+
+output "load_balancer_dns" {
+  value = kubernetes_service.tasky.status[0].load_balancer[0].ingress[0].hostname
+}

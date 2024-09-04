@@ -37,7 +37,7 @@ DEST=/tmp/\$${TIME}-mongodb-backup
 TGZ=/tmp/\$${TIME}-mongodb-backup.tgz
 
 # Dump from mongodb host into backup directory
-/usr/bin/mongodump --config=mongodump.conf -o \$${DEST}
+/usr/bin/mongodump --config=/root/mongodump.conf -o \$${DEST}
 
 # Create tgz of backup directory
 /bin/tar zcf \$${TGZ} -C \$${DEST} .
