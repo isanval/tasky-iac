@@ -33,7 +33,7 @@ resource "aws_subnet" "wiz-private-subnet2" {
   vpc_id     = aws_vpc.wiz-vpc.id
   cidr_block = "192.168.152.0/24"
   map_public_ip_on_launch = false
-  availability_zone = "eu-west-1b"
+  availability_zone = "eu-west-1a"
 
   tags = {
     Name = "wiz-private-subnet2"
@@ -97,11 +97,13 @@ resource "aws_route_table_association" "wiz-rt-inet-public-subnet" {
 # Associate the route table with the subnet
 resource "aws_route_table_association" "wiz-rt-inet-private-subnet" {
   subnet_id      = aws_subnet.wiz-private-subnet.id
+  #route_table_id = aws_route_table.wiz-rt-inet.id
   route_table_id = aws_route_table.wiz-rt-nat.id
 }
 
 # Associate the route table with the subnet
 resource "aws_route_table_association" "wiz-rt-inet-private-subnet2" {
   subnet_id      = aws_subnet.wiz-private-subnet2.id
+  #route_table_id = aws_route_table.wiz-rt-inet.id
   route_table_id = aws_route_table.wiz-rt-nat.id
 }
